@@ -5,7 +5,7 @@
   border-radius: 50%;
   border: 2px solid #333;
   margin: auto;
-  background-image: url("../images/earth_bg.jpg");
+  background-image: url("../images/globe.png");
 }
 
 .center-text {
@@ -21,16 +21,17 @@
   width: 50px; /* Adjust the size of the plane */
   height: auto;
   top: 125px; /* Move the plane down by 75px */
-  right: 125px;
-  animation: flyAroundCircle 10s linear 1;
+  right: 100px;
+  animation: flyAroundCircle 10s linear 3 forwards;
   transform-origin: 50% 100%; /* Set the transform origin to the bottom center */
 }
 
 @keyframes flyAroundCircle {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(150px);
+    transform: translate(-50%, -50%) rotate(-90deg) translateX(170px);
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg) translateX(150px);
+    transform: translate(-50%, -50%) rotate(270deg) translateX(170px);
+    visibility: hidden;
   }
 }
