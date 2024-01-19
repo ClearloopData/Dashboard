@@ -14,9 +14,6 @@ function CurrentPowerEmissions() {
     onValue(checkCurrentValue, (snapshot) => {
       const data = snapshot.val();
       const tvaMOER = data.lastValue.moer.TVA;
-      console.log(data);
-      console.log(tvaMOER);
-
       setCurrentPower(data.summed.kwh / 1000);
       setCurrentEmissions(tvaMOER * currentPower);
     });
@@ -24,7 +21,8 @@ function CurrentPowerEmissions() {
   return (
     <div>
       <h3>
-        {currentPower.toFixed(2)} MWh current power. This avoids{" "}
+        Clearloop's Jackson, TN solar farm is currently producing{" "}
+        {currentPower.toFixed(2)} MWh of solar power per hour. This avoids{" "}
         {currentEmissions.toFixed(0)} lbs of carbon.
       </h3>
     </div>
