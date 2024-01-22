@@ -1,6 +1,6 @@
 import React from "react";
-import "./PlaneComponent.css";
-import plane from "../images/plane.png";
+import "../styles/PlaneComponent.css";
+import plane from "../static/images/plane.png";
 const PlaneComponent = ({ mileage }) => {
   return (
     <div className="circle">

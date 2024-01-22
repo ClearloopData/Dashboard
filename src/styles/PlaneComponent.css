@@ -5,7 +5,10 @@
   border-radius: 50%;
   border: 2px solid #333;
   margin: auto;
-  background-image: url("../images/globe.png");
+  background-image: url("../static/images/globe.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: lighten;
 }
 
 .center-text {
@@ -22,7 +25,7 @@
   height: auto;
   top: 125px; /* Move the plane down by 75px */
   right: 100px;
-  animation: flyAroundCircle 10s linear 3 forwards;
+  animation: flyAroundCircle 10s linear infinite forwards;
   transform-origin: 50% 100%; /* Set the transform origin to the bottom center */
 }
 
