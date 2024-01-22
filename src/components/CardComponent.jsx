@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PlaneComponent from "../components/PlaneComponent";
 import "../styles/CardStyles.css";
 
 // The images to import for the cards.
@@ -125,6 +126,7 @@ function CardComponent() {
           </div>
         ))}
       </div>
+      <PlaneComponent carbon_offset={lastOutput}></PlaneComponent>
     </div>
   );
 }

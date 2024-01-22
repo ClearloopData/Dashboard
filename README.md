@@ -10,6 +10,6 @@
 
 ### To-do:
 
-1. Convert previous Svelte dashboard into existing tech stack (React, Firebase)
+1. Convert previous Svelte dashboard into existing tech stack (React, Firebase) - done Jan 22.
 2. Create engaging and real-time graphics to display Vandy carbon footprint data
 3. Style the existing components more consistently.

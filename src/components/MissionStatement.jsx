@@ -1,3 +1,8 @@
+/**
+ * MissionStatement.jsx
+ * The main banner shown on the homepage of the site.
+ */
+
 import React from "react";
 
 function MissionStatement() {

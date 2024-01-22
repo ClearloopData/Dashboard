@@ -1,3 +1,8 @@
+/**
+ * Caller.jsx
+ * Code in this file calls the WattTime REST API to get current and historical carbon data. Not currently in use.
+ */
+
 import React, { useState } from "react";
 import axios from "axios";
 
