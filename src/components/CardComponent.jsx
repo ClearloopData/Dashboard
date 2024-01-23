@@ -57,17 +57,17 @@ function CardComponent() {
 
   const liveCards = [
     {
-      imageUrl: solar_panel,
-      mainStat: `${currentPower.toFixed(2)} MWh`,
-      desc: `Clearloop's Jackson, TN solar farm is currently producing 
-      ${currentPower.toFixed(2)} MWh of energy.`,
-    },
-    {
       imageUrl: co2,
       mainStat: `${currentEmissions.toFixed(0)} lbs`,
       desc: `During the last hour, the Jackson, TN solar farm has offset ${currentEmissions.toFixed(
         0
       )} lbs of carbon emissions!`,
+    },
+    {
+      imageUrl: solar_panel,
+      mainStat: `${currentPower.toFixed(2)} MWh`,
+      desc: `Clearloop's Jackson, TN solar farm is currently producing 
+      ${currentPower.toFixed(2)} MWh of energy.`,
     },
     {
       imageUrl: month,
@@ -117,6 +117,19 @@ function CardComponent() {
         ))}
       </div>
       <h2 className="mainText">See what's happening now!</h2>
+      <div className="flex-container">
+        <h3>
+          Vanderbilt recently partnered with Clearloop, a Silicon Ranch company,
+          to hold to the University's commitment to powering its campus entirely
+          through renewable energy and maintaining carbon neutrality. The
+          investment will initally support a solar farm in Panola County,
+          Mississippi, powering over 1,000 homes in the area.
+        </h3>
+        <div className="right-justify">
+          <h3>Want to read more?</h3>
+          <button>Text</button>
+        </div>
+      </div>
       <div className="card-container">
         {liveCards.map((card) => (
           <div key={card.imageUrl} className="card">
@@ -126,7 +139,6 @@ function CardComponent() {
           </div>
         ))}
       </div>
-      <PlaneComponent carbon_offset={lastOutput}></PlaneComponent>
     </div>
   );
 }
