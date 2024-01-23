@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PlaneComponent from "../components/PlaneComponent";
+import Button from "react-bootstrap/Button";
 import "../styles/CardStyles.css";
 
 // The images to import for the cards.
@@ -118,7 +118,7 @@ function CardComponent() {
       </div>
       <h2 className="mainText">See what's happening now!</h2>
       <div className="flex-container">
-        <h3>
+        <h3 className="smallerText">
           Vanderbilt recently partnered with Clearloop, a Silicon Ranch company,
           to hold to the University's commitment to powering its campus entirely
           through renewable energy and maintaining carbon neutrality. The
@@ -126,8 +126,8 @@ function CardComponent() {
           Mississippi, powering over 1,000 homes in the area.
         </h3>
         <div className="right-justify">
-          <h3>Want to read more?</h3>
-          <button>Text</button>
+          <h3 className="mainText">Want to read more?</h3>
+          <Button variant="primary">Click here</Button>
         </div>
       </div>
       <div className="card-container">

@@ -15,6 +15,12 @@
   font-weight: normal;
 }
 
+.smallerText {
+  font-family: "FiraCode";
+  font-size: 20px;
+  font-weight: normal;
+}
+
 .container {
   padding: 40px;
 }
@@ -27,7 +33,7 @@
 }
 
 .card {
-  background-color: #dedede;
+  background-color: #e8e8e8;
   border-radius: 8px;
   padding: 5px;
   padding-top: 20px;
@@ -47,5 +53,5 @@
 }
 
 .right-justify {
-  justify-items: right;
+  justify-content: end;
 }
