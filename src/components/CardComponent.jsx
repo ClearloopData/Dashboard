@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
 import "../styles/CardStyles.css";
 
 // The images to import for the cards.
@@ -107,38 +108,53 @@ function CardComponent() {
       <h2 className="mainText">
         Some of Vanderbilt's most significant sustainabililty metrics
       </h2>
-      <div className="card-container">
+      <CardGroup className="card-container">
         {cards.map((card) => (
-          <div key={card.imageUrl} className="card">
-            <img src={card.imageUrl} />
-            <h2 className="mainText">{card.mainStat}</h2>
-            <p className="sectionName">{card.desc}</p>
-          </div>
+          <Card key={card.imageUrl} className="card">
+            <img src={card.imageUrl}></img>
+            <Card.Body>
+              <Card.Title className="mainText">{card.mainStat}</Card.Title>
+              <Card.Text className="sectionName">{card.desc}</Card.Text>
+            </Card.Body>
+          </Card>
         ))}
-      </div>
+      </CardGroup>
       <h2 className="mainText">See what's happening now!</h2>
-      <div className="flex-container">
-        <h3 className="smallerText">
-          Vanderbilt recently partnered with Clearloop, a Silicon Ranch company,
-          to hold to the University's commitment to powering its campus entirely
-          through renewable energy and maintaining carbon neutrality. The
-          investment will initally support a solar farm in Panola County,
-          Mississippi, powering over 1,000 homes in the area.
-        </h3>
-        <div className="right-justify">
-          <h3 className="mainText">Want to read more?</h3>
-          <Button variant="primary">Click here</Button>
-        </div>
-      </div>
-      <div className="card-container">
+      <Container className="solarImage">
+        <Row>
+          <Col xs={4}>
+            <h3 className="smallerText">
+              Vanderbilt recently partnered with Clearloop, a Silicon Ranch
+              company, to hold to the University's commitment to powering its
+              campus entirely through renewable energy and maintaining carbon
+              neutrality. The investment will initally support a solar farm in
+              Panola County, Mississippi, powering over 1,000 homes in the area.
+            </h3>
+          </Col>
+          <Col xs={4} className="offset-md-4">
+            <h3 className="mainText">Want to read more?</h3>
+            <Button
+              variant="primary"
+              href="https://clearloop.us/about-clearloop/"
+              target="_blank"
+            >
+              Click here
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+
+      <CardGroup className="card-container">
         {liveCards.map((card) => (
-          <div key={card.imageUrl} className="card">
-            <img src={card.imageUrl} />
-            <h2 className="mainText">{card.mainStat}</h2>
-            <p className="sectionName">{card.desc}</p>
-          </div>
+          <Card key={card.imageUrl} className="card">
+            <Card.Img src={card.imageUrl} className="img-fluid" />
+            <Card.Body>
+              <Card.Title className="mainText">{card.mainStat}</Card.Title>
+              <Card.Text className="sectionName">{card.desc}</Card.Text>
+            </Card.Body>
+          </Card>
         ))}
-      </div>
+      </CardGroup>
     </div>
   );
 }

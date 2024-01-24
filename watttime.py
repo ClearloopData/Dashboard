@@ -14,9 +14,10 @@ url = "https://api.watttime.org/v3/forecast"
 headers = {"Authorization": f"Bearer {TOKEN}"}
 params = {
     "region": "CAISO_NORTH",
-    "signal_type": "co2_moer",
+    "signal_type": "health_damage",
 }
 response = requests.get(url, headers=headers, params=params)
 response.raise_for_status()
 print(response.json())
+
 

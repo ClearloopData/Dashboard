@@ -2,7 +2,7 @@ import "./App.css";
 import CardComponent from "./components/CardComponent";
 import MissionStatement from "./components/MissionStatement";
 import StatsComponent from "./components/StatsComponent";
-// import "bootstrap/dist/css/bootstrap.min.css";
+
 // The main control for our application.
 function App() {
   return (

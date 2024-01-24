@@ -42,13 +42,6 @@ function StatsComponent() {
         </h5>
         <PlaneComponent></PlaneComponent>
       </div>
-      <div className="flex-container">
-        <img src={electric_car}></img>
-        <h5>
-          The energy produced by this farm in the last month could have powered
-          an electric car for {(lastPower * 3600).toFixed(0)} miles!
-        </h5>
-      </div>
     </div>
   );
 }
