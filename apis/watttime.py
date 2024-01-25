@@ -19,5 +19,3 @@ params = {
 response = requests.get(url, headers=headers, params=params)
 response.raise_for_status()
 print(response.json())
-
-
