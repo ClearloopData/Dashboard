@@ -104,21 +104,6 @@ function CardComponent() {
 
   return (
     <div className="container">
-      <p className="sectionName">STATISTICS</p>
-      <h2 className="mainText">
-        Some of Vanderbilt's most significant sustainabililty metrics
-      </h2>
-      <CardGroup className="card-container">
-        {cards.map((card) => (
-          <Card key={card.imageUrl} className="card">
-            <img src={card.imageUrl}></img>
-            <Card.Body>
-              <Card.Title className="mainText">{card.mainStat}</Card.Title>
-              <Card.Text className="sectionName">{card.desc}</Card.Text>
-            </Card.Body>
-          </Card>
-        ))}
-      </CardGroup>
       <h2 className="mainText">See what's happening now!</h2>
       <Container className="solarImage">
         <Row>
@@ -143,7 +128,7 @@ function CardComponent() {
           </Col>
         </Row>
       </Container>
-
+      <h2 className="mainText">Live stats</h2>
       <CardGroup className="card-container">
         {liveCards.map((card) => (
           <Card key={card.imageUrl} className="card">
@@ -151,6 +136,23 @@ function CardComponent() {
             <Card.Body>
               <Card.Title className="mainText">{card.mainStat}</Card.Title>
               <Card.Text className="sectionName">{card.desc}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardGroup>
+
+      <p className="sectionName">STATISTICS</p>
+      <h2 className="mainText">What else has Vanderbilt been working on?</h2>
+      <CardGroup className="card-container">
+        {cards.map((card) => (
+          <Card key={card.imageUrl} className="card">
+            <img src={card.imageUrl}></img>
+            <Card.Body>
+              <Card.Title className="mainText">{card.mainStat}</Card.Title>
+              <Card.Text className="sectionName">{card.desc}</Card.Text>
+            </Card.Body>
+            <Card.Body>
+              <Card.Link href="#">Read more here</Card.Link>
             </Card.Body>
           </Card>
         ))}
