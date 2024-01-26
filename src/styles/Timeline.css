@@ -1,0 +1,56 @@
+/* Timeline.css */
+
+.timeline {
+  list-style: none;
+  padding: 20px;
+  position: relative;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: #fff700;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.timeline-content {
+  background: #f8f9fa;
+  border: 1px solid #d6d8db;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  flex: 1;
+}
+
+.timeline-content h3 {
+  font-size: 1.2rem;
+}
+
+.timeline-content p {
+  margin-bottom: 0;
+}
+
+.timeline-content span {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.timeline-image {
+  margin-left: auto; /* Align to the right */
+}
+
+.timeline-image img {
+  width: 100%;
+  border-radius: 5px;
+}

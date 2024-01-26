@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import PlaneComponent from "./PlaneComponent";
 import { app } from "../firebase/firebaseConfig";
 import { getDatabase, ref, onValue } from "firebase/database";
-import electric_car from "../static/images/electric-car.png";
 
 const db = getDatabase(app);
 // Get the Firebase database.

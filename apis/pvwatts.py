@@ -3,9 +3,9 @@ import requests
 import csv # These are external libraries. Needed to open a csv.
 with open('apis/data/PVWatts.csv', newline='') as csvfile: # This is where my input is located. I just extracted the latitude and longitude.
     reader = csv.reader(csvfile, delimiter=',', quotechar='|') # Read the CSV.
-    for i in range(2605):
+    for i in range(2934):
         next(reader, None) # I have been running 500 lines at a time since the API is rate limited to 1,000 requests per hour.
-    for i in range(2606, 3200): # Starting at row 501 and going until row 1,000
+    for i in range(2935, 3200): # Starting at row 501 and going until row 1,000
         row = next(reader, None) # Get the next line.
         lat = row[0] # The latitude
         long = row[1] # The longitude
@@ -24,7 +24,9 @@ with open('apis/data/PVWatts.csv', newline='') as csvfile: # This is where my in
         }
         url = 'https://developer.nrel.gov/api/pvwatts/v8.json' # The endpoint you want to get.
         response = requests.get(url, params=params) # The HTTP get request.
-        data_to_write = response.json()["outputs"]["ac_annual"] # Returns a Python dict, this gets what I care about.
+        json = response.json()
+        print(json)
+        data_to_write = json["outputs"]["ac_annual"] # Returns a Python dict, this gets what I care about.
         with open('apis/data/final_data_2.csv', 'a', newline='') as results_file: # Write the output to another CSV with mode 'a' (Append).
             csv_writer = csv.writer(results_file)
             csv_writer.writerow([data_to_write]) # The actual writing.
