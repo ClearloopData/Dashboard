@@ -11,8 +11,10 @@
 # production
 /build
 
+# I don't want to publically include our spreadsheets.
+/apis/data/
+
 # misc
-.csv
 .DS_Store
 .env.local
 .env.development.local

@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Timeline.css";
-import VandyImage from "../static/images/Vandy.jpg";
-import jackson_farm from "../static/images/jackson_solar_farm.jpg";
+import VandyImage from "../static/images/spring-kirkland-hall.jpg";
+import solar_farm from "../static/images/solar-farm.jpg";
 
 const TimelineComponent = () => {
   const events = [
@@ -18,7 +18,7 @@ const TimelineComponent = () => {
       description:
         "Vanderbilt announces the start of its partnership with Clearloop.",
       date: "2021",
-      image: jackson_farm,
+      image: solar_farm,
     },
     // Add more events as needed
   ];

@@ -104,10 +104,10 @@ function CardComponent() {
 
   return (
     <div className="container">
-      <h2 className="mainText">See what's happening now!</h2>
       <Container className="solarImage">
         <Row>
-          <Col xs={4}>
+          <Col xs={12} sm={12} md={4} lg={4}>
+            <h2 className="mainText">What's happening now?</h2>
             <h3 className="smallerText">
               Vanderbilt recently partnered with Clearloop, a Silicon Ranch
               company, to hold to the University's commitment to powering its
@@ -116,7 +116,7 @@ function CardComponent() {
               Panola County, Mississippi, powering over 1,000 homes in the area.
             </h3>
           </Col>
-          <Col xs={4} className="offset-md-4">
+          <Col xs={12} sm={12} md={5} lg={5} className="offset-md-3">
             <h3 className="mainText">Want to read more?</h3>
             <Button
               variant="primary"
