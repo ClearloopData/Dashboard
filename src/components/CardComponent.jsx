@@ -128,6 +128,9 @@ function CardComponent() {
           </Col>
         </Row>
       </Container>
+
+      <p className="sectionName">STATISTICS</p>
+
       <h2 className="mainText">Live stats</h2>
       <CardGroup className="card-container">
         {liveCards.map((card) => (
@@ -140,8 +143,6 @@ function CardComponent() {
           </Card>
         ))}
       </CardGroup>
-
-      <p className="sectionName">STATISTICS</p>
       <h2 className="mainText">What else has Vanderbilt been working on?</h2>
       <CardGroup className="card-container">
         {cards.map((card) => (

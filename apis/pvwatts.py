@@ -12,7 +12,7 @@ with open('apis/data/PVWatts.csv', newline='', encoding='utf-8-sig') as csvfile:
         params = { # These are the API parameters. You will need to edit these most likely.
             "format": "json",
             "api_key": API_KEY,
-            "system_capacity": 1,
+            "system_capacity": 2,
             "module_type": 2,
             "losses": 20,
             "array_type": 3,
@@ -22,7 +22,7 @@ with open('apis/data/PVWatts.csv', newline='', encoding='utf-8-sig') as csvfile:
             "lon": long,
             "dc_ac_ratio": 1.4
         }
-        url = 'https://developer.nrel.gov/api/pvwatts/v6.json' # The endpoint you want to get.
+        url = 'https://developer.nrel.gov/api/pvwatts/v8.json' # The endpoint you want to get.
         response = requests.get(url, params=params) # The HTTP get request.
         json = response.json()
         data_to_write = json["outputs"]["ac_annual"] # Returns a Python dict, this gets what I care about.

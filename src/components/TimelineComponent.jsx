@@ -1,30 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Timeline.css";
-import VandyImage from "../static/images/spring-kirkland-hall.jpg";
-import solar_farm from "../static/images/solar-farm.jpg";
 
-const TimelineComponent = () => {
-  const events = [
-    {
-      title: "Start of something great!",
-      description:
-        "Vanderbilt started its mission to be carbon neutral and power its campus through sustainable energy.",
-      date: "2019",
-      image: VandyImage,
-    },
-    {
-      title: "Partnership with Clearloop",
-      description:
-        "Vanderbilt announces the start of its partnership with Clearloop.",
-      date: "2021",
-      image: solar_farm,
-    },
-    // Add more events as needed
-  ];
+const TimelineComponent = ({ events, title }) => {
   return (
     <div className="timeline">
-      <h3>A timeline of recent sustainability trends!</h3>
+      <h3>{title}</h3>
       {events.map((event, index) => (
         <div key={index} className="timeline-item">
           <div className="timeline-content">
