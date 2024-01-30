@@ -4,7 +4,7 @@ import "../styles/Timeline.css";
 import { Container } from "react-bootstrap";
 const TimelineComponent = ({ events, title }) => {
   return (
-    <Container className="text-center">
+    <Container className="text-center mx-auto m-4">
       <div className="timeline">
         {events.map((event, index) => (
           <div key={index} className="timeline-item">

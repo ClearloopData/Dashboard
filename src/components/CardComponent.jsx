@@ -21,16 +21,19 @@ const cards = [
     imageUrl: carbon_neutral,
     mainStat: "Carbon Neutral",
     desc: "Vanderbilt has been carbon neutral since 2021.",
+    link: "https://www.vanderbit.edu/sustainabililty",
   },
   {
     imageUrl: LEED,
     mainStat: "24+",
     desc: "Vanderbilt has 24+ LEED certified projects and was the first university in TN to earn LEED certification.",
+    link: "https://www.vanderbilt.edu/sustainability/annual-sustainability-report-fy22-23/",
   },
   {
     imageUrl: water_icon,
     mainStat: "253M gallons",
     desc: "As of 2022, the University's water usage was down over 60% compared to 10 years ago.",
+    link: "https://www.vanderbilt.edu/sustainability/annual-sustainability-report-2021-2/",
   },
 ];
 
@@ -153,7 +156,7 @@ function CardComponent() {
               <Card.Text className="sectionName">{card.desc}</Card.Text>
             </Card.Body>
             <Card.Body>
-              <Card.Link href="#">Read more here</Card.Link>
+              <Card.Link href={card.link}>Read more here</Card.Link>
             </Card.Body>
           </Card>
         ))}

@@ -1,11 +1,9 @@
-/* Timeline.css */
-
 .timeline {
   list-style: none;
   padding: 20px;
   position: relative;
   width: 50%;
-  align-items: center;
+  margin: auto; /* Center the timeline horizontally */
 }
 
 .timeline:before {
@@ -14,7 +12,7 @@
   top: 0;
   bottom: 0;
   width: 10px;
-  background: #fff700;
+  background: #f7e15d;
   left: 50%;
   margin-left: -2px;
 }
