@@ -4,6 +4,8 @@
   list-style: none;
   padding: 20px;
   position: relative;
+  width: 50%;
+  align-items: center;
 }
 
 .timeline:before {
