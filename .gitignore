@@ -15,7 +15,11 @@
 /apis/data/
 
 # Exclude the database config file.
-/src/firebase/database_config.json
+/apis/database_config.json
+
+# Exclude bundled code
+/lambda_package
+
 # misc
 .DS_Store
 .env.local
