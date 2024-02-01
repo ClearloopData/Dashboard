@@ -8,7 +8,7 @@
 #   1) LMP (The locational marginal pricing.)
 #   2) MCC (The marginal congestion component.)
 #   3) MLC (The marginal loss at a node; the cost of transmission losses. Should be relatively small.)
-# [louisinana_data]: A dict with the same structure as the arkansas_data dict.
+# [louisiana_data]: A dict with the same structure as the arkansas_data dict.
 
 import requests
 import firebase_admin
