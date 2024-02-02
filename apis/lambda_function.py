@@ -22,7 +22,7 @@ def lambda_handler(event, context):
         default_app = firebase_admin.initialize_app(cred_obj, {
         'databaseURL': "https://clearloop-miso-data-default-rtdb.firebaseio.com"
         }) 
-    ref = db.reference("/five_min_data")
+    ref = db.reference("/one_hour_data") # How often should we get the data?
     # No API key required.
     url = "https://api.misoenergy.org/MISORTWDDataBroker/DataBrokerServices.asmx?messageType=getlmpconsolidatedtable&returnType=json"
     res = requests.get(url)
