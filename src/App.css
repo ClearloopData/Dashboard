@@ -47,3 +47,21 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+.mainText {
+  font-family: "FiraCode";
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.smallText {
+  font-family: "FiraCode";
+  font-size: 32px;
+  font-weight: normal;
+}
+
+.smallerText {
+  font-family: "FiraCode";
+  font-size: 20px;
+  font-weight: normal;
+}

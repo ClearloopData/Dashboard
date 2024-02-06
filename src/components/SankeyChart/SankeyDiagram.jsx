@@ -1,43 +1,40 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { Container, Button, Modal } from "react-bootstrap";
 import { Chart } from "react-google-charts";
-
-export const data = [
-  ["From", "To", "Weight"],
-  ["Vanderbilt 2023 Emissions", "Scope 1 Emissions", 63021],
-  ["Vanderbilt 2023 Emissions", "Scope 2 Emissions", 35855],
-  ["Vanderbilt 2023 Emissions", "Scope 3 Emissions", 14947],
-  ["Scope 1 Emissions", "Natural Gas", 61958],
-  ["Scope 1 Emissions", "Other Energy Sources", 1063],
-  ["Scope 2 Emissions", "Purchased Electricity", 35855],
-  ["Scope 3 Emissions", "Waste Disposal and Recycling", 2551],
-  ["Scope 3 Emissions", "Air Travel", 6942],
-  ["Scope 3 Emissions", "Commuting", 5453],
-];
+import { data, descriptions } from "./data";
 
 export const options = {
   sankey: {
+    // To specify that these options apply to the Sankey graph
+    link: {
+      interactivity: true, // Allows you to be able to select links (which we want).
+    },
     node: {
-      interactivity: true,
+      label: {
+        fontSize: 12,
+        color: "#000", // Black
+        bold: true,
+        italic: false,
+      },
+      interactivity: false, // Allows you to not be able to select nodes (only select edges) False by default.
+      labelPadding: 6,
+      nodePadding: 10,
+      width: 5,
+      colors: ["#AEB3C4", "#100B32", "#F7E15D", "#FFFCD1"], // https://clearloop.design
     },
   },
 };
 
 export function SankeyDiagram() {
   const [selectedNode, setSelectedNode] = useState(null);
-
-  const handleNodeClick = (node) => {
-    console.log(node);
-    if (node[0] == "From" || node[0] == "To") {
-      return;
-    }
-    setSelectedNode(node);
-  };
+  const [selectedDescription, setSelectedDescription] = useState(null);
 
   return (
     <Container>
+      <h3 className="mainText">A visual of Vanderbilt's 2022-2023 emissions</h3>
+      <h3 className="smallerText">
+        Click on any of the paths to see more info.
+      </h3>
       <Chart
         chartType="Sankey"
         width="100%"
@@ -49,25 +46,30 @@ export function SankeyDiagram() {
             eventName: "ready",
             callback: ({ chartWrapper, google }) => {
               const chart = chartWrapper.getChart();
-              chart.container.addEventListener("click", (ev) =>
-                console.log(ev)
-              );
+              google.visualization.events.addListener(chart, "select", () => {
+                setSelectedNode(data[chart.getSelection()[0].row + 1]);
+                setSelectedDescription(
+                  descriptions[chart.getSelection()[0].row]
+                );
+                console.log(chart.getSelection()[0].row);
+                /* This is selecting the corresponding data entry for the path selected. 1-indexed. */
+              });
             },
           },
         ]}
       />
       <Modal show={selectedNode !== null} onHide={() => setSelectedNode(null)}>
         <Modal.Header closeButton>
-          <Modal.Title>Node Details</Modal.Title>
+          <Modal.Title>
+            {selectedNode === null
+              ? ""
+              : `${selectedNode[0]}: ${selectedNode[1]}`}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {selectedNode && (
-            <div>
-              <p>From: {selectedNode[0]}</p>
-              <p>To: {selectedNode[1]}</p>
-              <p>Weight: {selectedNode[2]}</p>
-            </div>
-          )}
+          {selectedNode === null
+            ? ""
+            : `${selectedDescription} This source emits ${selectedNode[2]} metric tons of CO2.`}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setSelectedNode(null)}>

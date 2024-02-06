@@ -21,7 +21,7 @@ const Caller = () => {
         auth: {
           // Use HTTP Basic Auth with the username and password already set up.
           username: "DanielHenricks",
-          password: "Dan1el!!",
+          password: "",
         },
       })
       .then((response) => {

@@ -3,24 +3,6 @@
   font-size: 20px;
 }
 
-.mainText {
-  font-family: "FiraCode";
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.smallText {
-  font-family: "FiraCode";
-  font-size: 32px;
-  font-weight: normal;
-}
-
-.smallerText {
-  font-family: "FiraCode";
-  font-size: 20px;
-  font-weight: normal;
-}
-
 .card {
   background-color: #e8e8e8;
   border-radius: 10px;
