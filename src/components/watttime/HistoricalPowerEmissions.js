@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { app } from "../firebase/firebaseConfig";
+import { app } from "../../firebase/firebaseConfig";
 import { getDatabase, ref, onValue } from "firebase/database";
-import PlaneComponent from "./PlaneComponent";
+import PlaneComponent from "../PlaneComponent";
 
 const db = getDatabase(app);
 const monthArray = [

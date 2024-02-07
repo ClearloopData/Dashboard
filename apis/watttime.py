@@ -1,20 +1,20 @@
 # Code by Daniel Henricks
 
+import os
+from dotenv import load_dotenv, find_dotenv
+
 import requests
 from requests.auth import HTTPBasicAuth
 login_url = 'https://api.watttime.org/login'
-rsp = requests.get(login_url, auth=HTTPBasicAuth('DanielHenricks', 'Dan1el!!'))
+load_dotenv(find_dotenv())
+PASSWORD = os.environ.get("WATTTIME_PASSWORD")
+rsp = requests.get(login_url, auth=HTTPBasicAuth('DanielHenricks', PASSWORD))
 TOKEN = rsp.json()['token']
-
-
-
-url = "https://api.watttime.org/v3/forecast"
-
-# Provide your TOKEN here, see https://docs.watttime.org/#tag/Authentication/operation/get_token_login_get for more information
+url = "https://api.watttime.org/v3/signal-index"
 headers = {"Authorization": f"Bearer {TOKEN}"}
 params = {
-    "region": "CAISO_NORTH",
-    "signal_type": "health_damage",
+    "region": "TVA",
+    "signal_type": "co2_moer"
 }
 response = requests.get(url, headers=headers, params=params)
 response.raise_for_status()

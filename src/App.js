@@ -6,6 +6,7 @@ import TimelineComponent from "./components/TimelineComponent";
 import VandyImage from "./static/images/spring-kirkland-hall.jpg";
 import solar_farm from "./static/images/solar-farm.jpg";
 import silicon_ranch from "./static/images/silicon-ranch.jpg";
+import FAQ from "./components/FAQ";
 import { SankeyDiagram } from "./components/SankeyChart/SankeyDiagram";
 
 const events = [
@@ -51,6 +52,7 @@ function App() {
         title={"A timeline of recent sustainability events!"}
       ></TimelineComponent>
       <SankeyDiagram></SankeyDiagram>
+      <FAQ></FAQ>
     </div>
   );
 }

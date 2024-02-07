@@ -17,10 +17,11 @@
 3. Style the existing components more consistently. - done Jan 29.
 4. Change the color and styling of the timeline. - done Jan 31.
 5. Set up an automatic database for the MISO price data - done Feb 1.
+6. Sankey plot prototype from Commodore Cup. - done Feb 6.
+7. Set up a Power BI dashboard - done Feb 6th.
 
 ### To-do:
 
 1. Create engaging and real-time graphics to display Vandy carbon footprint data - in progress
-2. Separate the CardComponent into parts. - in progress
-3. Get access to GPM; integrate WattTime V3
-4. Sankey plot prototype from Commodore Cup.
+2. Get access to GPM; integrate WattTime V3; get API key for WattTime
+3. Restructure everything in the dashboard to be more coherent.
