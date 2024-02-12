@@ -8,6 +8,7 @@ import solar_farm from "./static/images/solar-farm.jpg";
 import silicon_ranch from "./static/images/silicon-ranch.jpg";
 import FAQ from "./components/FAQ";
 import { SankeyDiagram } from "./components/SankeyChart/SankeyDiagram";
+import MapComponent from "./components/Map/MapComponent";
 
 const events = [
   {
@@ -53,6 +54,7 @@ function App() {
       ></TimelineComponent>
       <SankeyDiagram></SankeyDiagram>
       <FAQ></FAQ>
+      <MapComponent></MapComponent>
     </div>
   );
 }
