@@ -9,6 +9,7 @@ import silicon_ranch from "./static/images/silicon-ranch.jpg";
 import FAQ from "./components/FAQ";
 import { SankeyDiagram } from "./components/SankeyChart/SankeyDiagram";
 import MapComponent from "./components/Map/MapComponent";
+import NavComponent from "./components/Navbar";
 
 const events = [
   {
@@ -40,6 +41,7 @@ const events = [
 function App() {
   return (
     <div className="App">
+      <NavComponent></NavComponent>
       <div className="bgImage">
         <div className="mainPanel">
           <MissionStatement />
