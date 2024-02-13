@@ -1,0 +1,7 @@
+.dataImage {
+  background: url("../static/images/jackson_solar_farm.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
+  color: white;
+  height: 100vh;
+}

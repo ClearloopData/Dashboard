@@ -1,6 +1,6 @@
 /**
  * Caller.jsx
- * Code in this file calls the WattTime REST API to get current and historical carbon data. Not currently in use.
+ * Code in this file calls the WattTime REST API to get current and historical carbon data. Deprecated.
  */
 
 import React, { useState } from "react";
