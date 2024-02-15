@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { app } from "../../firebase/firebaseConfig";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { Chart } from "react-google-charts";
+import { Container, Row, Col } from "react-bootstrap";
 
 const options = {
   region: "US-TN",
@@ -59,29 +60,49 @@ function MapComponent() {
     });
   });
   return (
-    <div>
-      <Chart
-        chartType="GeoChart"
-        width="100%"
-        height="400px"
-        data={data}
-        options={options}
-        mapsApiKey={"AIzaSyBualKZmr8vXmaUolaLyOS3DsiyOglv0is"}
-        chartEvents={[
-          {
-            eventName: "ready",
-            callback: ({ chartWrapper, google }) => {
-              const chart = chartWrapper.getChart();
-              google.visualization.events.addListener(chart, "select", () => {
-                if (chart.getSelection()[0] !== undefined) {
-                  window.open(links[chart.getSelection()[0].row], "_blank");
-                }
-              });
-            },
-          },
-        ]}
-      />
-    </div>
+    <Container>
+      <Row>
+        <Col xs={12} sm={12} md={6} lg={6}>
+          <Chart
+            chartType="GeoChart"
+            width="100%"
+            height="400px"
+            data={data}
+            options={options}
+            mapsApiKey={"AIzaSyBualKZmr8vXmaUolaLyOS3DsiyOglv0is"}
+            chartEvents={[
+              {
+                eventName: "ready",
+                callback: ({ chartWrapper, google }) => {
+                  const chart = chartWrapper.getChart();
+                  google.visualization.events.addListener(
+                    chart,
+                    "select",
+                    () => {
+                      if (chart.getSelection()[0] !== undefined) {
+                        window.open(links[chart.getSelection()[0].row]);
+                      }
+                    }
+                  );
+                },
+              },
+            ]}
+          />
+        </Col>
+        <Col xs={12} sm={12} md={5} lg={5} className="offset-md-1">
+          <h2 className="mainText">Where are these solar farms located?</h2>
+          <h3 className="smallerText">
+            The current Clearloop solar farms are located in Jackson, TN, and
+            Paris, TN. In addition, Vanderbilt's solar farm is being built in
+            Panola County, Mississippi, eventually powering over 1,000 homes in
+            the area.
+          </h3>
+          <h3 className="smallerText">
+            Click on any of the dots on the map to read more!
+          </h3>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -7,7 +7,16 @@ function FAQ() {
       <Accordion flush>
         <Accordion.Item eventKey="0">
           <Accordion.Header>How can I get involved?</Accordion.Header>
-          <Accordion.Body>...</Accordion.Body>
+          <Accordion.Body>
+            Vanderbilt's sustainability department has many ideas!{" "}
+            <a
+              href="https://www.vanderbilt.edu/sustainability/what-you-can-do-2/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Visit them here.
+            </a>{" "}
+          </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey="1">
           <Accordion.Header>What can I recycle?</Accordion.Header>

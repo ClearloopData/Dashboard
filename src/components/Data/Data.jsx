@@ -7,6 +7,9 @@ import React from "react";
 import Header from "./Header";
 import NavComponent from "../Navbar";
 import { Container } from "react-bootstrap";
+import CardComponent from "../CardComponent";
+import StatsComponent from "../StatsComponent";
+import MapComponent from "../Map/MapComponent";
 import "../../styles/DataStyles.css";
 function Data() {
   return (
@@ -17,6 +20,9 @@ function Data() {
           <Header />
         </Container>
       </div>
+      <CardComponent />
+      <StatsComponent />
+      <MapComponent></MapComponent>
     </div>
   );
 }

@@ -1,3 +1,9 @@
+.mainText {
+  font-family: "FiraCode";
+  font-size: 40px;
+  font-weight: bold;
+}
+
 .sectionName {
   font-family: "FiraCode";
   font-size: 20px;
@@ -25,10 +31,4 @@
 .flex-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-}
-
-.mainText {
-  font-family: "FiraCode";
-  font-size: 40px;
-  font-weight: bold;
 }

@@ -46,6 +46,12 @@ export const data = [
     ["Scope 3 Emissions", "Waste Disposal and Recycling", 2551],
     ["Scope 3 Emissions", "Air Travel", 6942],
     ["Scope 3 Emissions", "Commuting", 5453],
+    ["Natural Gas", "Offset by Clearloop", 61958],
+    ["Other Energy Sources", "Offset by Clearloop", 1063],
+    ["Purchased Electricity", "Offset by Silicon Ranch", 35855],
+    ["Waste Disposal and Recycling", "Offset by Clearloop", 2551],
+    ["Air Travel", "Offset by Clearloop", 6942],
+    ["Commuting", "Offset by Clearloop", 5453],
   ],
 ];
 
@@ -59,4 +65,10 @@ export const descriptions = [
   "Of Vanderbilt’s Scope 3 emissions, waste and recycling is responsible for 2 percent of the total GHGs that Vanderbilt emitted as of 2023. To combat this, Vanderbilt will stop most institutional single-use plastic purchases by 2025, and expand food waste collection to include all dining areas and residential halls.",
   "Vanderbilt offsets the carbon emissions created from air travel from faculty, staff, postdoc and graduate students.",
   "Vanderbilt offsets the carbon emissions created from commuting to campus from faculty, staff, postdoc and graduate students.",
+  "Clearloop has partnered with Vanderbilt to offset the university's scope 1 emissions.",
+  "Clearloop has partnered with Vanderbilt to offset the university's scope 1 emissions.",
+  "Silicon Ranch has partnered with Vanderbilt to offset the university's scope 2 emissions.",
+  "Clearloop has partnered with Vanderbilt to offset the university's scope 3 emissions.",
+  "Clearloop has partnered with Vanderbilt to offset the university's scope 3 emissions.",
+  "Clearloop has partnered with Vanderbilt to offset the university's scope 3 emissions.",
 ];

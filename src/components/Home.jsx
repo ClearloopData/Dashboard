@@ -1,14 +1,12 @@
 import "../App.css";
-import CardComponent from "./CardComponent";
+import StaticCardComponent from "./StaticCardComponent";
 import MissionStatement from "./MissionStatement";
-import StatsComponent from "./StatsComponent";
 import TimelineComponent from "./TimelineComponent";
 import VandyImage from "../static/images/spring-kirkland-hall.jpg";
 import solar_farm from "../static/images/solar-farm.jpg";
 import silicon_ranch from "../static/images/silicon-ranch.jpg";
 import FAQ from "./FAQ";
 import { SankeyDiagram } from "./SankeyChart/SankeyDiagram";
-import MapComponent from "./Map/MapComponent";
 import NavComponent from "./Navbar";
 
 const events = [
@@ -47,16 +45,13 @@ function Home() {
           <MissionStatement />
         </div>
       </div>
-
-      <CardComponent></CardComponent>
-      <StatsComponent></StatsComponent>
+      <StaticCardComponent />
       <TimelineComponent
         events={events}
         title={"A timeline of recent sustainability events!"}
       ></TimelineComponent>
       <SankeyDiagram></SankeyDiagram>
       <FAQ></FAQ>
-      <MapComponent></MapComponent>
     </div>
   );
 }
