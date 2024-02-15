@@ -16,7 +16,7 @@
 
 # Exclude the database config file.
 /apis/database_config.json
-
+/apis/watttime_database_config.json
 # Exclude bundled code
 /lambda_package
 
