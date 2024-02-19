@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container, Button, Modal } from "react-bootstrap";
 import { Chart } from "react-google-charts";
 import { data, descriptions } from "./data";
@@ -29,7 +29,7 @@ export function SankeyDiagram() {
   const [selectedNode, setSelectedNode] = useState(null);
   const [selectedDescription, setSelectedDescription] = useState(null);
   const [selectedYear, setSelectedYear] = useState("2022-2023"); // Default year (current year)
-  const [index, setIndex] = useState(1); // The 6th (0-indexed) year with emissions reported. TODO
+  const [index, setIndex] = useState(3); // The 6th (0-indexed) year with emissions reported. TODO
 
   const handleYearChange = (year) => {
     setSelectedYear(year);
@@ -93,6 +93,7 @@ export function SankeyDiagram() {
             callback: ({ chartWrapper, google }) => {
               const chart = chartWrapper.getChart();
               google.visualization.events.addListener(chart, "select", () => {
+                console.log(index);
                 setSelectedNode(data[index][chart.getSelection()[0].row + 1]);
                 setSelectedDescription(
                   descriptions[chart.getSelection()[0].row]
@@ -110,7 +111,15 @@ export function SankeyDiagram() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {selectedNode === null ? "" : `${selectedDescription}`}
+          {selectedNode === null
+            ? ""
+            : `${
+                selectedDescription +
+                " \n" +
+                "This component contributes " +
+                (2204 * selectedNode[2]).toLocaleString("en-us") +
+                " lbs of CO2 to the University's carbon footprint."
+              }`}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setSelectedNode(null)}>
