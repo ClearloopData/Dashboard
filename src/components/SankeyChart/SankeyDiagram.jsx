@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Container, Button, Modal } from "react-bootstrap";
 import { Chart } from "react-google-charts";
 import { data, descriptions } from "./data";
@@ -11,15 +11,15 @@ export const options = {
     },
     node: {
       label: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#000", // Black
         bold: true,
         italic: false,
       },
-      interactivity: false, // Allows you to not be able to select nodes (only select edges) False by default.
-      labelPadding: 6,
-      nodePadding: 10,
-      width: 5,
+      interactivity: false, // Allows you to not be able to select nodes (only select edges). False by default.
+      labelPadding: 0,
+      nodePadding: 20,
+      width: 10,
       colors: ["#AEB3C4", "#100B32", "#F7E15D", "#FFFCD1"], // https://clearloop.design
     },
   },
@@ -29,7 +29,8 @@ export function SankeyDiagram() {
   const [selectedNode, setSelectedNode] = useState(null);
   const [selectedDescription, setSelectedDescription] = useState(null);
   const [selectedYear, setSelectedYear] = useState("2022-2023"); // Default year (current year)
-  const [index, setIndex] = useState(3); // The 6th (0-indexed) year with emissions reported. TODO
+  const indexRef = useRef(3);
+  indexRef.current = parseInt(selectedYear.substring(0, 4)) - 2019;
 
   const handleYearChange = (year) => {
     setSelectedYear(year);
@@ -37,11 +38,8 @@ export function SankeyDiagram() {
     setSelectedDescription(null);
   };
 
-  useEffect(() => {
-    // Update the index whenever selectedYear changes
-    setIndex(parseInt(selectedYear.substring(0, 4)) - 2019);
-  }, [selectedYear]);
-
+  // No useEffect is necessary here since no data is being updated asynchronously. Instead, use the useRef
+  // hook.
   return (
     <Container>
       <h3 className="mainText">
@@ -85,7 +83,7 @@ export function SankeyDiagram() {
         chartType="Sankey"
         width="100%"
         height="500px"
-        data={data[index]}
+        data={data[indexRef.current]}
         options={options}
         chartEvents={[
           {
@@ -93,12 +91,13 @@ export function SankeyDiagram() {
             callback: ({ chartWrapper, google }) => {
               const chart = chartWrapper.getChart();
               google.visualization.events.addListener(chart, "select", () => {
-                console.log(index);
-                setSelectedNode(data[index][chart.getSelection()[0].row + 1]);
-                setSelectedDescription(
-                  descriptions[chart.getSelection()[0].row]
-                );
                 /* This is selecting the corresponding data entry for the path selected. 1-indexed. */
+                setSelectedNode(
+                  data[indexRef.current][chart.getSelection()[0].row + 1]
+                );
+                setSelectedDescription(
+                  descriptions[indexRef.current][chart.getSelection()[0].row]
+                );
               });
             },
           },
