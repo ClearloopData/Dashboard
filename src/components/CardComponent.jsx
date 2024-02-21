@@ -50,9 +50,12 @@ function CardComponent() {
     },
     {
       imageUrl: month,
-      mainStat: `${lastOutput.toFixed(0)} lbs`,
-      desc: `During the month of ${currentMonthString}, the Jackson, TN solar farm has offset ${lastOutput.toFixed(
-        0
+      mainStat: `${parseInt(lastOutput.toFixed(0)).toLocaleString(
+        "en-us"
+      )} lbs`,
+      desc: `During the month of ${currentMonthString}, the Jackson, TN solar farm has offset 
+      ${parseInt(lastOutput.toFixed(0)).toLocaleString(
+        "en-us"
       )} lbs of carbon.`,
     },
   ];

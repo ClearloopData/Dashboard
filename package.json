@@ -2,6 +2,7 @@
   "name": "watttime",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/data",
   "dependencies": {
     "@fontsource/fira-code": "^5.0.16",
     "@fontsource/fira-mono": "^5.0.8",

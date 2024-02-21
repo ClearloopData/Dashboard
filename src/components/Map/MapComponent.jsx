@@ -27,7 +27,7 @@ function MapComponent() {
     ["City", "Current Power Production (MWh)", "CO2 saved (lbs)"],
     ["Jackson", jacksonPower, jackson2],
     ["Paris", parisPower, paris],
-    ["Batesville, MS", 0.2, 100],
+    ["Batesville, MS", 0, 0],
   ];
 
   const links = [

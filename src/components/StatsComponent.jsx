@@ -37,7 +37,12 @@ function StatsComponent() {
         <h5 className="smallText">
           During the last month, the Jackson solar farm could have offset the
           emissions from flying{" "}
-          <strong>{computeAirMiles(lastOffset).toFixed(0)}</strong> miles!
+          <strong>
+            {parseInt(computeAirMiles(lastOffset).toFixed(0)).toLocaleString(
+              "en-us"
+            )}
+          </strong>{" "}
+          miles!
         </h5>
         <PlaneComponent></PlaneComponent>
       </div>
