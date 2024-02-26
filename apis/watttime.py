@@ -1,5 +1,4 @@
 # Code by Daniel Henricks
-# Todo: convert this to AWS lambda_function.
 
 import os
 from dotenv import load_dotenv, find_dotenv
