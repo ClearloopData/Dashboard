@@ -33,15 +33,16 @@ TOKEN_2 = response.json()["AccessToken"]
 MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
 DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-year = 0
-month = 8
+year = 1
+month = 4
 days = 0
 while year < 2:
     sum_for_month = 0
     for num in range(DAYS_IN_MONTH[month]):
-        start_time = 1661990400 + days * 60 * 60 * 24
-        end_time = 1661990400 + (days+1) * 60 * 60 * 24
+        start_time = 1682898900 + (days+1) * 60 * 60 * 24
+        end_time = 1682898900 + (days+2) * 60 * 60 * 24
         dt = datetime.utcfromtimestamp(start_time).isoformat() + 'Z'
+        print(dt)
         dt2 = datetime.utcfromtimestamp(end_time).isoformat() + 'Z'
         url = "https://api.watttime.org/v3/forecast/historical"
         headers = {"Authorization": f"Bearer {TOKEN}"}
@@ -66,7 +67,7 @@ while year < 2:
         headers = {"Authorization": f"Bearer {TOKEN_2}"}
 
         params = {
-            'dataSourceId': 2575415,
+            'dataSourceId': 3100535,
             'startDate': start_time, # September, 2022.
             'endDate': end_time, # The current time (in Unix format)
             'aggregationType': 0, # Sum without zeros. See https://webapisiliconranch.horizon.greenpowermonitor.com/swagger/ui/index#!/DataList/DataList_GetDataList.
@@ -86,7 +87,6 @@ while year < 2:
                 summ + kwh_arr[it] * 1200 / 1000
             else: summ = summ + kwh_arr[it] * moer_arr[it] / 1000
             it = it + 1
-        print("day " + str(days) + " complete")
         days = days+1
         sum_for_month = sum_for_month + summ
         
