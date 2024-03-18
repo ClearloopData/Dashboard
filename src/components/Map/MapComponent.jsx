@@ -37,26 +37,22 @@ function MapComponent() {
   ];
 
   useEffect(() => {
-    const checkCurrentValue = ref(db, `jackson2/realtimeData/lastHour`);
+    const checkCurrentValue = ref(db, `realtime/lastHour/jackson`);
     // When the current value changes, recalculate the TVA MOER value.
     onValue(checkCurrentValue, (snapshot) => {
       const data = snapshot.val();
-      const tvaMOER = data.lastValue.moer.TVA;
-      let currentPower = data.summed.kwh / 1000;
-      setJacksonPower(currentPower);
-      setJackson2(tvaMOER * currentPower);
+      setJacksonPower(data.mwh);
+      setJackson2(data.co2);
     });
   });
 
   useEffect(() => {
-    const checkCurrentValue = ref(db, `paris/realtimeData/lastHour`);
+    const checkCurrentValue = ref(db, `realtime/lastHour/paris`);
     // When the current value changes, recalculate the TVA MOER value.
     onValue(checkCurrentValue, (snapshot) => {
       const data = snapshot.val();
-      const tvaMOER = data.lastValue.moer.TVA;
-      let currentPower = data.summed.kwh / 1000;
-      setParisPower(currentPower);
-      setParis(tvaMOER * currentPower);
+      setParisPower(data.mwh);
+      setParis(data.co2);
     });
   });
   return (

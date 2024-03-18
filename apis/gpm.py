@@ -50,10 +50,12 @@ json_res = res.json()
 i = 0
 manual_co2 = [246263.0051,264195.9009,166742.489,99756.18955,128541.6036,150894.9144,224285.7754,261644.7628,269417.0016,241250.0515,298351.2876,287829.1354,277316.8712, 213245.486, 93647, 120084, 46383, 168557]
 for entry in json_res:
-    month = entry["Date"][0:7]
+    year = entry["Date"][0:4]
+    month = entry["Date"][5:7]
     value = entry["Value"] # this is in kwh
     #doc_ref = db.reference("/historical/jackson")
-    #doc_ref.child(month).set({"mwh": int(value/1000), "co2": manual_co2[i]})
+    #year_ref = doc_ref.child(str(year))
+    #year_ref.child(month).set({"mwh": int(value/1000), "co2": manual_co2[i]})
     i = i + 1
 
 print("Jackson data updated on Firebase successfully!")
@@ -73,11 +75,13 @@ manual_data_paris = [{"Date": "2023-01", "Value": 59.20}, {"Date": "2023-02", "V
                      {"Date": "2023-03", "Value": 158.60}, {"Date": "2023-04", "Value": 200.12}]
 
 manual_co2_paris = [68449,147249,191145,239933,297275,293135,243443,203511,183754,138516,74414,99592,42412,163438]
-i = 3
-for entry in json_res:
-    month = entry["Date"][0:7]
-    value = entry["Value"]
+i = 0
+for entry in manual_data_paris:
+    year = entry["Date"][0:4]
+    month = entry["Date"][5:7]
+    value = entry["Value"] # this is in kwh
     doc_ref = db.reference("/historical/paris")
-    doc_ref.child(month).set({"mwh": int(value/1000), "co2": manual_co2_paris[i]})
+    year_ref = doc_ref.child(str(year))
+    year_ref.child(month).set({"mwh": int(value), "co2": manual_co2_paris[i]})
     i = i + 1
     

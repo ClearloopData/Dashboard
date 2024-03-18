@@ -61,25 +61,25 @@ function CardComponent() {
   ];
 
   useEffect(() => {
-    const checkCurrentValue = ref(db, `jackson2/realtimeData/lastHour`);
+    const checkCurrentValue = ref(db, `realtime/lastHour/jackson`);
     // When the current value changes, recalculate the TVA MOER value.
     onValue(checkCurrentValue, (snapshot) => {
       const data = snapshot.val();
-      const tvaMOER = data.lastValue.moer.TVA;
-      setCurrentPower(data.summed.kwh / 1000);
-      setCurrentEmissions(tvaMOER * currentPower);
+      setCurrentPower(data.mwh);
+      setCurrentEmissions(data.co2);
     });
   });
 
   useEffect(() => {
-    const getHistoricalValues = ref(db, `jackson2/historicalData`);
+    const getHistoricalValues = ref(db, `historical/jackson`);
     onValue(getHistoricalValues, (snapshot) => {
       const data = snapshot.val();
       const currentYear = new Date().getFullYear();
-      const currentMonthIndex = data[currentYear].length - 1;
-      const currentMonthOutput = data[currentYear][currentMonthIndex]; // the current year's most recent month
-      setLastOutput(currentMonthOutput.lbs);
-      setCurrentMonthString(monthArray[currentMonthIndex]);
+      let currentMonthIndex = new Date().getMonth() + 1;
+      const formattedMonthIndex = String(currentMonthIndex).padStart(2, "0");
+      const currentMonthOutput = data[currentYear][formattedMonthIndex]; // the current year's most recent month
+      setLastOutput(currentMonthOutput.co2);
+      setCurrentMonthString(monthArray[formattedMonthIndex]);
     });
   });
 

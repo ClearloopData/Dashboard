@@ -19,13 +19,14 @@ function StatsComponent() {
   };
 
   useEffect(() => {
-    const getHistoricalValues = ref(db, `jackson2/historicalData`);
+    const getHistoricalValues = ref(db, `historical/jackson`);
     onValue(getHistoricalValues, (snapshot) => {
       const data = snapshot.val();
       const currentYear = new Date().getFullYear();
-      const currentMonthIndex = data[currentYear].length - 1;
-      const currentMonthOutput = data[currentYear][currentMonthIndex]; // the current year's most recent month
-      setLastOffset(currentMonthOutput.lbs);
+      let currentMonthIndex = new Date().getMonth() + 1;
+      const formattedMonthIndex = String(currentMonthIndex).padStart(2, "0");
+      const currentMonthOutput = data[currentYear][formattedMonthIndex]; // the current year's most recent month
+      setLastOffset(currentMonthOutput.co2);
       setLastPower(currentMonthOutput.mwh);
     });
   });
