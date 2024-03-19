@@ -57,6 +57,7 @@ function MapComponent() {
   });
   return (
     <Container>
+      <h2 className="mainText">Where are these solar farms located?</h2>
       <Row>
         <Col xs={12} sm={12} md={6} lg={6}>
           <Chart
@@ -86,7 +87,6 @@ function MapComponent() {
           />
         </Col>
         <Col xs={12} sm={12} md={5} lg={5} className="offset-md-1">
-          <h2 className="mainText">Where are these solar farms located?</h2>
           <h3 className="smallerText">
             The current Clearloop solar farms are located in Jackson, TN, and
             Paris, TN. In addition, Vanderbilt's solar farm is being built in

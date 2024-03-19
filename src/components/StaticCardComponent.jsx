@@ -13,14 +13,14 @@ const cards = [
   },
   {
     imageUrl: LEED,
-    mainStat: "24+",
-    desc: "Vanderbilt has 24+ LEED certified projects and was the first university in TN to earn LEED certification.",
+    mainStat: "25",
+    desc: "Vanderbilt has 25 LEED certified buildings on campus.",
     link: "https://www.vanderbilt.edu/sustainability/annual-sustainability-report-fy22-23/",
   },
   {
     imageUrl: water_icon,
     mainStat: "253M gallons",
-    desc: "As of 2022, the University's water usage was down over 60% compared to 10 years ago.",
+    desc: "As of 2022, the University's water usage was down 60% compared to 10 years ago.",
     link: "https://www.vanderbilt.edu/sustainability/annual-sustainability-report-2021-2/",
   },
 ];

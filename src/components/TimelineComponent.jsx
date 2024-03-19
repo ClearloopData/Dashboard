@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Timeline.css";
 import { Container, Row, Col } from "react-bootstrap";
-const TimelineComponent = ({ events }) => {
+const TimelineComponent = ({ events, title }) => {
   return (
     <Container className="mx-auto m-4">
       <Row>

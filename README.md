@@ -21,13 +21,12 @@
 7. Set up a Power BI dashboard - done Feb 6th.
 8. Get access to GPM; integrate WattTime V3; get API key for WattTime - done Feb 14th.
 9. Restructure everything in the dashboard to be more coherent. - done Feb 15th.
+10. Get an email to set up organizational databases. - done March
+11. Expand the Sankey diagram
 
 ### To-do:
 
 1. Create engaging and real-time graphics to display Vandy carbon footprint data - in progress
-2. Expand the Sankey diagram
-3. Get in contact with VUIT about hosting the website
-4. Get an email to set up organizational databases.
 
 ### How to get started:
 

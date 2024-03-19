@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PlaneComponent from "./PlaneComponent";
 import { app } from "../firebase/firebaseConfig";
 import { getDatabase, ref, onValue } from "firebase/database";
+import { Container, Row, Col } from "react-bootstrap";
 
 const db = getDatabase(app);
 // Get the Firebase database.
@@ -32,22 +33,26 @@ function StatsComponent() {
   });
 
   return (
-    <div className="container">
+    <Container>
       <h3 className="mainText">To put that into perspective...</h3>
-      <div className="flex-container">
-        <h5 className="smallText">
-          During the last month, the Jackson solar farm could have offset the
-          emissions from flying{" "}
-          <strong>
-            {parseInt(computeAirMiles(lastOffset).toFixed(0)).toLocaleString(
-              "en-us"
-            )}
-          </strong>{" "}
-          miles!
-        </h5>
-        <PlaneComponent></PlaneComponent>
-      </div>
-    </div>
+      <Row>
+        <Col xs={12} sm={12} md={4} lg={4}>
+          <h5 className="smallText">
+            During the last month, the Jackson solar farm could have offset the
+            emissions from flying{" "}
+            <strong>
+              {parseInt(computeAirMiles(lastOffset).toFixed(0)).toLocaleString(
+                "en-us"
+              )}
+            </strong>{" "}
+            miles!
+          </h5>
+        </Col>
+        <Col xs={12} sm={12} md={5} lg={5} className="offset-md-3">
+          <PlaneComponent></PlaneComponent>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

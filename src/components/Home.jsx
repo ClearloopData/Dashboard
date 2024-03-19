@@ -46,11 +46,11 @@ function Home() {
         </div>
       </div>
       <StaticCardComponent />
+      <SankeyDiagram></SankeyDiagram>
       <TimelineComponent
         events={events}
-        title={"A timeline of recent sustainability events!"}
+        title={"Recent sustainability events!"}
       ></TimelineComponent>
-      <SankeyDiagram></SankeyDiagram>
       <FAQ></FAQ>
     </div>
   );
