@@ -24,17 +24,18 @@ for i in ("TVA", "ERCOT_NORTHCENTRAL", "CAISO_NORTH"):
     }
     response = requests.get(url, headers=headers, params=params)
     final_res[i] = response.json()["data"][0]["value"]
+    print(response.json())
+print(final_res)
 
-
-cred = credentials.Certificate("apis/watttime_database_config.json")
-firebase_admin.initialize_app(cred, 
-    {
-    'databaseURL': "https://clearloop-watttime-default-rtdb.firebaseio.com/"
-    }
-                              )
+# cred = credentials.Certificate("apis/watttime_database_config.json")
+# firebase_admin.initialize_app(cred, 
+#     {
+#     'databaseURL': "https://clearloop-watttime-default-rtdb.firebaseio.com/"
+#     }
+#                               )
    
-ref = db.reference("/moer")
-ref.push(final_res)
+# ref = db.reference("/moer")
+# ref.push(final_res)
 
 # The final_res array will take the form of (example): 
 # {'TVA': 1177.6, 'ERCOT_NORTHCENTRAL': 653.2, 'CAISO_NORTH': 1012.9}
