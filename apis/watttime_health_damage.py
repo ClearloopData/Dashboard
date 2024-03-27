@@ -44,8 +44,7 @@ firebase_admin.initialize_app(cred,
                               )
    
 to_push = []
-ref = db.reference("/health_damage/TVA")
-
+ref = db.reference("/health_damage/CAISO_NORTH")
 
 start = 1704067200 # Jan 1st, 2024 
 today = int(time.time())
@@ -59,7 +58,7 @@ while start <= (today  - 60 * 60 * 24):
     params = {
             "start": dt,
             "end": dt2,
-            "region": "TVA",
+            "region": "CAISO_NORTH",
             "signal_type": "health_damage",
             "horizon_hours": 0
     }

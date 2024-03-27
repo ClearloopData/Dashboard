@@ -10,6 +10,8 @@ import { Container } from "react-bootstrap";
 import CardComponent from "../CardComponent";
 import StatsComponent from "../StatsComponent";
 import MapComponent from "../Map/MapComponent";
+import SolarOffsetsTimeline from "../FAQ/Timeline/Components/SolarOffsetsTimeline";
+
 import "../../styles/DataStyles.css";
 function Data() {
   return (
@@ -23,6 +25,7 @@ function Data() {
       <CardComponent />
       <StatsComponent />
       <MapComponent></MapComponent>
+      <SolarOffsetsTimeline></SolarOffsetsTimeline>
     </div>
   );
 }
