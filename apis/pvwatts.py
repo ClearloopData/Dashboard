@@ -12,10 +12,10 @@ with open('apis/data/PVWatts.csv', newline='', encoding='utf-8-sig') as csvfile:
         params = { # These are the API parameters. You will need to edit these most likely.
             "format": "json",
             "api_key": API_KEY,
-            "system_capacity": 2,
+            "system_capacity": 1,
             "module_type": 2,
             "losses": 20,
-            "array_type": 3,
+            "array_type": 2,
             "tilt": 0,
             "azimuth": 180,
             "lat": lat,
