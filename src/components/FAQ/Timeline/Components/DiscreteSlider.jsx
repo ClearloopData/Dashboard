@@ -2,13 +2,13 @@ import * as React from "react";
 import Slider from "@mui/material/Slider";
 
 export default function DiscreteSliderValues({ marks, onSliderChange }) {
-  function valuetext(value) {
-    return "";
-  }
+  const valuetext = (value) => {
+    return ""; //Todo
+  };
 
-  function valueLabelFormat(value) {
+  const valueLabelFormat = (value) => {
     return marks.findIndex((mark) => mark.value === value) + 1;
-  }
+  };
 
   return (
     <Slider

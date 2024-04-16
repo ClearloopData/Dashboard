@@ -10,7 +10,7 @@ function Header() {
     <div className="mission-statement">
       <div className="mission-text">
         <h2>Resources</h2>
-        <p>Find some resources to learn more about sustainability!</p>
+        <p>Find some resources to learn more about sustainability</p>
       </div>
     </div>
   );

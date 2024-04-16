@@ -57,7 +57,7 @@ function MapComponent() {
   });
   return (
     <Container>
-      <h2 className="mainText">Where are these solar farms located?</h2>
+      <h2 className="mainText">Where are Clearloop's solar farms located?</h2>
       <Row>
         <Col xs={12} sm={12} md={6} lg={6}>
           <Chart
@@ -94,7 +94,7 @@ function MapComponent() {
             the area.
           </h3>
           <h3 className="smallerText">
-            Click on any of the dots on the map to read more!
+            Click on any of the dots on the map to read more.
           </h3>
         </Col>
       </Row>

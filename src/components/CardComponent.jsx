@@ -40,7 +40,7 @@ function CardComponent() {
       mainStat: `${currentEmissions.toFixed(0)} lbs`,
       desc: `During the last hour, the Jackson, TN solar farm has offset ${currentEmissions.toFixed(
         0
-      )} lbs of carbon emissions!`,
+      )} lbs of carbon emissions.`,
     },
     {
       imageUrl: solar_panel,

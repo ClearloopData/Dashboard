@@ -16,7 +16,6 @@ import "../../styles/DataStyles.css";
 function Data() {
   return (
     <div>
-      <NavComponent></NavComponent>
       <div className="dataImage">
         <Container>
           <Header />

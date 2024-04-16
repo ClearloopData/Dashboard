@@ -8,18 +8,19 @@ import silicon_ranch from "../static/images/silicon-ranch.jpg";
 import FAQ from "./FAQ";
 import { SankeyDiagram } from "./SankeyChart/SankeyDiagram";
 import NavComponent from "./Navbar";
-
+import Data from "./Data/Data";
+import Resources from "./Resources/Resources";
 const events = [
   {
-    title: "Start of something great!",
+    title: "Start of something great",
     description:
-      "Vanderbilt started its mission to be carbon neutral and power its campus through sustainable energy.",
+      "Vanderbilt started its mission to be carbon neutral and power its campus through sustainable energy via a partnership with Climate Vault.",
     date: "2019",
     image: VandyImage,
     link: "https://news.vanderbilt.edu/2019/04/22/vanderbilt-outlines-major-plans-to-reduce-environmental-footprint/",
   },
   {
-    title: "Carbon Neutral!",
+    title: "Carbon Neutral",
     description: "Vanderbilt officially becomes carbon neutral.",
     date: "2021",
     image: silicon_ranch,
@@ -39,7 +40,6 @@ const events = [
 function Home() {
   return (
     <div className="App">
-      <NavComponent></NavComponent>
       <div className="bgImage">
         <div className="mainPanel">
           <MissionStatement />
@@ -51,7 +51,9 @@ function Home() {
         events={events}
         title={"Recent sustainability events!"}
       ></TimelineComponent>
-      <FAQ></FAQ>
+
+      <Data></Data>
+      <Resources />
     </div>
   );
 }

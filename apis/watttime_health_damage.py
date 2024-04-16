@@ -9,10 +9,9 @@ import time
 from datetime import date, datetime, timedelta
 import os
 from dotenv import load_dotenv, find_dotenv
-import firebase_admin
-from firebase_admin import db, credentials
 import requests
 from requests.auth import HTTPBasicAuth
+import csv
 
 login_url = 'https://api.watttime.org/login'
 load_dotenv(find_dotenv())
@@ -26,68 +25,53 @@ headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
 }
-
 data = {
     'username': 'mwebster',
     'password': PASSWORD_2
 }
-
 response = requests.post(url, json=data, headers=headers)
-
 TOKEN_2 = response.json()["AccessToken"]
 
-cred = credentials.Certificate("apis/watttime_database_config.json")
-firebase_admin.initialize_app(cred, 
-    {
-    'databaseURL': "https://clearloop-watttime-default-rtdb.firebaseio.com/"
-    }
-                              )
-   
-to_push = []
-ref = db.reference("/health_damage/CAISO_NORTH")
+regions = ["TVA", "SOCO", "CAISO_NORTH", "MISO_LOWER_MS_RIVER", "ERCOT_NORTHCENTRAL", "ISONE_CT", "ISONE_ME", "ISONE_NEMA", "ISONE_NH", "ISONE_RI", "ISONE_SEMA", "ISONE_VT", "ISONE_WCMA"]
 
-start = 1704067200 # Jan 1st, 2024 
-today = int(time.time())
+for region in regions:
+    start = 1704067200  # Jan 1st, 2024
+    today = 1706745600
 
-while start <= (today  - 60 * 60 * 24):
-    end_time = start + 60 * 60 * 24
-    dt = datetime.utcfromtimestamp(start).isoformat() + 'Z'
-    dt2 = datetime.utcfromtimestamp(end_time).isoformat() + 'Z'
-    url = "https://api.watttime.org/v3/forecast/historical"
-    headers = {"Authorization": f"Bearer {TOKEN}"}
-    params = {
-            "start": dt,
-            "end": dt2,
-            "region": "CAISO_NORTH",
-            "signal_type": "health_damage",
-            "horizon_hours": 0
-    }
+    with open('apis/data/health_damage_data.csv', 'a', newline='') as csvfile:
+        fieldnames = ['region', 'date', 'value']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
 
-    response = requests.get(url, headers=headers, params=params)
-    json_res = response.json()
-    sum = 0
-    for entry in json_res['data']:
-        sum += entry['forecast'][0]["value"]
-    
-    daily_average_health_damage = round(sum / 288)
-    url = 'https://webapisiliconranch.horizon.greenpowermonitor.com/api/DataList'
-    headers = {"Authorization": f"Bearer {TOKEN_2}"}
+        while start <= (today - 60 * 60 * 24):
+            end_time = start + 60 * 60 * 24
+            dt = datetime.utcfromtimestamp(start).isoformat() + 'Z'
+            dt2 = datetime.utcfromtimestamp(end_time).isoformat() + 'Z'
 
-    params = {
-        'dataSourceId': 3100535,
-        'startDate': start, 
-        'endDate': end_time, 
-        'aggregationType': 0, # Sum without zeros. See https://webapisiliconranch.horizon.greenpowermonitor.com/swagger/ui/index#!/DataList/DataList_GetDataList.
-        'grouping': 'day'
-    }
+            url = "https://api.watttime.org/v3/forecast/historical"
+            headers = {"Authorization": f"Bearer {TOKEN}"}
+            params = {
+                "start": dt,
+                "end": dt2,
+                "region": region,
+                "signal_type": "health_damage",
+                "horizon_hours": 0
+            }
+            response = requests.get(url, headers=headers, params=params)
+            json_res = response.json()
 
-    res = requests.get(url, params=params, headers=headers)
-    mwh_day = res.json()[0]['Value'] / 1000
-    
-    ref.push().set({
-        'date': dt,
-        'value': mwh_day * daily_average_health_damage
-    })
-    start += (24 * 60 * 60)
-    
-print("Data finished uploading to Firebase")
+            sum = 0
+            for entry in json_res['data']:
+                sum += entry['forecast'][0]["value"]
+            daily_average_health_damage = round(sum / 288)
+
+            res = requests.get(url, params=params, headers=headers)
+            writer.writerow({
+                'region': region,
+                'date': dt,
+                'value': daily_average_health_damage
+            })
+            print(daily_average_health_damage)
+            start += (24 * 60 * 60)
+
+    print(f'{region} data finished saving to CSV file.')

@@ -11,8 +11,7 @@ function Header() {
       <div className="mission-text">
         <h2>Data</h2>
         <p>
-          See more live data from Vandy's sustainability efforts and solar
-          farms!
+          See more live data from Vandy's sustainability efforts and solar farms
         </p>
       </div>
     </div>

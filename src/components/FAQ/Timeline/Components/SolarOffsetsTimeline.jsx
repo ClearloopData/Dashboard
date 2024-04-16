@@ -25,7 +25,7 @@ import plant_5 from "../images/powerplants/plant-5.png";
 import reclaimed from "../images/reclaimed.png";
 
 // The slider
-import SliderTest from "./SliderTest";
+import DiscreteSlider from "./DiscreteSlider";
 import StateStats from "./StateStats";
 
 const SolarOffsetsTimeline = ({ solar_farm_name }) => {
@@ -95,8 +95,8 @@ const SolarOffsetsTimeline = ({ solar_farm_name }) => {
     {
       title: "Step 4: Health Benefits Provided",
       description: `Seven million people a year die from air pollution. Fossil-fueled power plants emit pollutants that damage health like sulfur dioxide. These pollutants cause people living close to power plants to experience higher rates of health problems, such as asthma, heart disease, stroke, and premature death caused by breathing these pollutants. The Jackson solar farm prevented approximately `,
-      number: `$${(production * health_damage).toFixed(2)}`,
-      units: `of damage to human health ${
+      number: `$${(production * 51).toFixed(2)}`,
+      units: `in medical costs from damage to human health ${
         index === 5
           ? "during the last hour"
           : `${5 - index} hour${5 - index !== 1 ? "s" : ""} ago`
@@ -210,12 +210,12 @@ const SolarOffsetsTimeline = ({ solar_farm_name }) => {
         <Col xs={0} sm={0} md={3} lg={3}></Col>
         <Col xs={12} sm={12} md={6} lg={6}>
           <h2 className="mainText">
-            So how does Clearloop calculate carbon offsets?
+            How does Clearloop calculate carbon reclaimed?
           </h2>
           <p>
             Use the slider to see what's been happening in the past few hours.
           </p>
-          <SliderTest
+          <DiscreteSlider
             marks={renderSliderMarks()}
             onSliderChange={handleSliderChange}
           />

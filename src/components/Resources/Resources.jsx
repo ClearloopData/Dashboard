@@ -8,7 +8,6 @@ import Header from "./Header";
 import NavComponent from "../Navbar";
 import { Container } from "react-bootstrap";
 import "../../styles/ResourcesStyles.css";
-import SolarOffsetsTimeline from "../FAQ/Timeline/Components/SolarOffsetsTimeline";
 import FAQ from "../FAQ";
 function Resources() {
   return (
@@ -18,7 +17,6 @@ function Resources() {
           <Header />
         </Container>
       </div>
-      <SolarOffsetsTimeline></SolarOffsetsTimeline>
       <FAQ></FAQ>
     </div>
   );
