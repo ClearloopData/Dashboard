@@ -9,7 +9,7 @@ import plane from "../static/images/plane.png";
 
 const PlaneComponent = () => {
   return (
-    <div className="circle">
+    <div className="plane-circle">
       <img src={plane} className="plane" />
     </div>
   );

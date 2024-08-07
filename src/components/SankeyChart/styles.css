@@ -1,0 +1,29 @@
+/* Add these styles to your CSS file or in a <style> tag in your component */
+
+/* For the link hover effect */
+.google-visualization-sankey-link {
+    cursor: pointer;
+  }
+
+  .sankey-link {
+    cursor: pointer;
+  }
+  
+  
+  /* For the button hover effect */
+  .btn-secondary:hover {
+    background-color: #787E9B;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+
+  .sankey-button {
+    transition: all 0.3s ease;
+  }
+  
+  .sankey-button.highlighted {
+    background-color: #AEB3C4;
+    transform: scale(1.05);
+  }
+  
+  

@@ -8,6 +8,7 @@ import silicon_ranch from "../static/images/silicon-ranch.jpg";
 import FAQ from "./FAQ";
 import { SankeyDiagram } from "./SankeyChart/SankeyDiagram";
 import NavComponent from "./Navbar";
+import Achievements from "./Achievement";
 
 const events = [
   {
@@ -45,6 +46,7 @@ function Home() {
           <MissionStatement />
         </div>
       </div>
+      <Achievements />
       <StaticCardComponent />
       <SankeyDiagram></SankeyDiagram>
       <TimelineComponent

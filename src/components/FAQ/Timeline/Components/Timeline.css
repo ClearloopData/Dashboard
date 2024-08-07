@@ -1,14 +1,14 @@
-.timeline-item {
+.solar-timeline-item {
   position: relative;
 }
 
-.timeline-content p span {
+.solar-timeline-content p span {
   font-size: 1.2rem;
   color: #333;
   font-weight: bold;
 }
 
-.timeline-item::after {
+.solar-timeline-item::after {
   content: "";
   position: absolute;
   top: 0;
@@ -19,24 +19,24 @@
   transition: border-color 0.3s ease; /* Smooth transition */
 }
 
-.timeline-item:hover::after {
+.solar-timeline-item:hover::after {
   border-color: #fdf5b4; /* Change border color on hover */
 }
 
-.timeline-item:hover {
+.solar-timeline-item:hover {
   transform: scale(1.02); /* Increase size on hover */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
-.timeline {
+.solar-timeline {
   list-style: none;
   padding: 20px;
   position: relative;
   margin: auto;
 }
 
-.timeline:before {
+.solar-timeline:before {
   content: "";
   position: absolute;
   top: 0;
@@ -47,41 +47,45 @@
   margin-left: -2px;
 }
 
-.timeline-item {
+.solar-timeline-item {
   margin-bottom: 20px;
   position: relative;
   display: flex;
   align-items: flex-start;
 }
 
-.timeline-content {
-  background: #f8f9fa;
-  border: 1px solid #d6d8db;
+.solar-timeline-content {
+  background: white;
+  border: 1px solid white;
   border-radius: 5px;
   padding: 20px;
   position: relative;
   flex: 1;
 }
 
-.timeline-content h3 {
+.solar-timeline-content h3 {
   font-size: 1.2rem;
 }
 
-.timeline-content p {
+.solar-timeline-content p {
   margin-bottom: 0;
 }
 
-.timeline-content span {
+.solar-timeline-content span {
   font-size: 0.8rem;
-  color: #6c757d;
+  color: black;
 }
 
-.timeline-image {
+.solar-timeline-image {
   margin: 0 auto;
   max-width: 175px;
 }
 
-.timeline-image img {
+.solar-timeline-image img {
   width: 100%;
   border-radius: 5px;
+}
+
+.solar-timeline-container {
+  max-width: 1200px; /* Increase container width */
 }

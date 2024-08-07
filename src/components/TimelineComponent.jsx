@@ -1,32 +1,39 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Timeline.css";
-import { Container, Row, Col } from "react-bootstrap";
+
 const TimelineComponent = ({ events, title }) => {
+  
+
+  const handleNavigation = (link) => {
+    window.open(link, '_blank');
+  };
+
   return (
-    <Container className="mx-auto m-4">
-      <Row>
-        <Col xs={0} sm={0} md={3} lg={3}></Col>
-        <Col xs={12} sm={12} md={6} lg={6}>
-          <div className="timeline text-center">
-            {events.map((event, index) => (
-              <div key={index} className="timeline-item">
-                <div className="timeline-content">
-                  <h3>{event.title}</h3>
-                  <p>{event.description}</p>
-                  <span>{event.date}</span>
-                  {event.image && (
-                    <div className="timeline-image">
-                      <img src={event.image} alt={`Event ${index + 1}`} />
-                    </div>
-                  )}
+    <div className="timeline-container">
+      {/* <h2 className="text-center">{title}</h2> */}
+      <div className="timeline">
+        {events.map((event, index) => (
+          <div 
+            key={`${event.title}-${index}`} 
+            className="timeline-item"
+            style={{ cursor: 'pointer' }} 
+            onClick={() => handleNavigation(event.link)}
+            data-date={event.date} // Add the data-date attribute here
+          >
+            <div className="timeline-node"></div>
+            <div className="timeline-content">
+              <h3>{event.title}</h3>
+              <p>{event.description}</p>
+              {event.image && (
+                <div className="timeline-image">
+                  <img src={event.image} alt={`Event ${index + 1}`} />
                 </div>
-              </div>
-            ))}
+              )}
+            </div>
           </div>
-        </Col>
-      </Row>
-    </Container>
+        ))}
+      </div>
+    </div>
   );
 };
 

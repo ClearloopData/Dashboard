@@ -1,0 +1,77 @@
+.achievements {
+    text-align: center;
+    padding: 40px;
+    background-color: white;
+    color: #be9c08;
+}
+
+.achievements h1 {
+    font-size: 60px;
+    margin-bottom: 100px;
+    color: black;
+    font-family: 'Garamond', serif;
+}
+
+.achievement-circles {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.circle {
+    background: white;
+    border: 2px solid gold;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(27, 26, 26, 0.15);
+    color: black;
+    transition: transform 0.3s ease; /* Added transition */
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 10px solid #be9c08;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: lighten;
+    margin-bottom: 2rem;
+    font-family: 'Garamond', serif;
+}
+
+.circle:hover {
+    transform: scale(1.05); /* Added hover effect */
+}
+
+.circle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.achievement-number {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.achievement-title {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Garamond', serif;
+}
+
+.achievement-description {
+    font-size: 16px;
+    margin-top: 5px;
+    text-align: center;
+    font-family: 'Garamond', serif;
+}

@@ -1,26 +1,31 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Container, Button, Modal } from "react-bootstrap";
 import { Chart } from "react-google-charts";
 import { data, descriptions } from "./data";
+import './styles.css'; // Make sure to import your CSS file
 
 export const options = {
   sankey: {
-    // To specify that these options apply to the Sankey graph
     link: {
-      interactivity: true, // Allows you to be able to select links (which we want).
+      interactivity: true,
+      colorMode: 'gradient',
+      colors: ['#100b32', '#aeb3c4', '#f7e15d', '#FFFCD1'],
     },
     node: {
       label: {
         fontSize: 10,
-        color: "#000", // Black
+        color: "#000",
         bold: true,
         italic: false,
       },
-      interactivity: false, // Allows you to not be able to select nodes (only select edges). False by default.
+      interactivity: false,
       labelPadding: 0,
       nodePadding: 20,
       width: 10,
-      colors: ["#AEB3C4", "#100B32", "#F7E15D", "#FFFCD1"], // https://clearloop.design
+      colors: ["#100B32", "#AEB3C4", "#F7E15D", "#FFFCD1"],
+    },
+    tooltip: {
+      isHtml: true, // Enable HTML tooltips
     },
   },
 };
@@ -28,62 +33,99 @@ export const options = {
 export function SankeyDiagram() {
   const [selectedNode, setSelectedNode] = useState(null);
   const [selectedDescription, setSelectedDescription] = useState(null);
-  const [selectedYear, setSelectedYear] = useState("2022-2023"); // Default year (current year)
+  const [selectedYear, setSelectedYear] = useState("2022-2023");
+  const [isAutoSwitching, setIsAutoSwitching] = useState(true); // New state to track auto-switching
   const indexRef = useRef(3);
   indexRef.current = parseInt(selectedYear.substring(0, 4)) - 2019;
+
+  const years = ["2019-2020", "2020-2021", "2021-2022", "2022-2023"];
+
+  useEffect(() => {
+    const applyLinkStyles = () => {
+      const links = document.querySelectorAll('path[sankey-link]');
+      links.forEach(link => {
+        link.classList.add('sankey-link');
+      });
+    };
+
+    // Apply styles after a delay to ensure the chart has been rendered
+    setTimeout(applyLinkStyles, 1000);
+  }, [selectedYear]);
+
+  useEffect(() => {
+    const switchYearAutomatically = () => {
+      const currentIndex = years.indexOf(selectedYear);
+      const nextIndex = (currentIndex + 1) % years.length;
+      setSelectedYear(years[nextIndex]);
+    };
+
+    let interval;
+    if (isAutoSwitching) {
+      interval = setInterval(switchYearAutomatically, 10000); // Switch every 10 seconds
+    }
+
+    return () => clearInterval(interval); // Clear interval on unmount
+  }, [selectedYear, isAutoSwitching]);
 
   const handleYearChange = (year) => {
     setSelectedYear(year);
     setSelectedNode(null);
     setSelectedDescription(null);
+    setIsAutoSwitching(false); // Stop auto-switching when a button is clicked
   };
 
-  // No useEffect is necessary here since no data is being updated asynchronously. Instead, use the useRef
-  // hook.
+  const calculateTotalWeightPerLayer = (data) => {
+    const layerWeights = {};
+    data.slice(1).forEach(row => {
+      if (!layerWeights[row[0]]) {
+        layerWeights[row[0]] = 0;
+      }
+      layerWeights[row[0]] += row[2];
+    });
+    return layerWeights;
+  };
+
+  const addTooltipData = (data) => {
+    const totalWeightPerLayer = calculateTotalWeightPerLayer(data);
+    return data.map((row, index) => {
+      if (index === 0) {
+        // Add column header for tooltip
+        return [...row, { role: 'tooltip', type: 'string', p: { html: true } }];
+      } else {
+        const weight = row[2];
+        const totalWeight = totalWeightPerLayer[row[0]];
+        const percentage = ((weight / totalWeight) * 100).toFixed(2);
+        const tooltip = `${row[1]} takes ${percentage}% in ${row[0]}`;
+        return [...row, tooltip];
+      }
+    });
+  };
+
+  const modifiedData = addTooltipData(data[indexRef.current]);
+
   return (
     <Container>
       <h3 className="mainText">
-        A visual of Vanderbilt's {selectedYear} emissions
-      </h3>
-      <h3 className="smallerText">
-        Click on any of the paths to see more info. Select a year to see that
-        year's emissions.
+        Tracking Vanderbilt's Historical Carbon Emissions: {selectedYear}
       </h3>
       <div>
-        {/* Buttons for all of the years that emissions have been tracked at Vanderbilt */}
-        <Button
-          variant={selectedYear === "2019-2020" ? "primary" : "secondary"}
-          onClick={() => handleYearChange("2019-2020")}
-        >
-          2019-2020
-        </Button>{" "}
-        {/* Add similar buttons for other years */}
-        <Button
-          variant={selectedYear === "2020-2021" ? "primary" : "secondary"}
-          onClick={() => handleYearChange("2020-2021")}
-        >
-          2020-2021
-        </Button>{" "}
-        <Button
-          variant={selectedYear === "2021-2022" ? "primary" : "secondary"}
-          onClick={() => handleYearChange("2021-2022")}
-        >
-          2021-2022
-        </Button>{" "}
-        {/* Add similar buttons for other years */}
-        <Button
-          variant={selectedYear === "2022-2023" ? "primary" : "secondary"}
-          onClick={() => handleYearChange("2022-2023")}
-        >
-          2022-2023
-        </Button>
+        {years.map((year, idx) => (
+          <Button
+            key={year}
+            variant={selectedYear === year ? "primary" : "secondary"}
+            onClick={() => handleYearChange(year)}
+            className={`sankey-button ${selectedYear === year ? 'highlighted' : ''}`}
+          >
+            {year}
+          </Button>
+        ))}
       </div>
 
       <Chart
         chartType="Sankey"
         width="100%"
         height="500px"
-        data={data[indexRef.current]}
+        data={modifiedData}
         options={options}
         chartEvents={[
           {
@@ -91,13 +133,17 @@ export function SankeyDiagram() {
             callback: ({ chartWrapper, google }) => {
               const chart = chartWrapper.getChart();
               google.visualization.events.addListener(chart, "select", () => {
-                /* This is selecting the corresponding data entry for the path selected. 1-indexed. */
-                setSelectedNode(
-                  data[indexRef.current][chart.getSelection()[0].row + 1]
-                );
-                setSelectedDescription(
-                  descriptions[indexRef.current][chart.getSelection()[0].row]
-                );
+                const selection = chart.getSelection()[0];
+                const selectedRow = data[indexRef.current][selection.row + 1];
+                const weight = selectedRow[2];
+                const totalWeightPerLayer = calculateTotalWeightPerLayer(data[indexRef.current]);
+                const totalWeight = totalWeightPerLayer[selectedRow[0]];
+                const percentage = ((weight / totalWeight) * 100).toFixed(2);
+                const description = descriptions[indexRef.current][selection.row];
+
+                setSelectedNode(selectedRow);
+                // Set the description without percentage
+                setSelectedDescription(`${description} \nThis component contributes ${(2204 * weight).toLocaleString("en-us")} lbs of CO2 to the University's carbon footprint.`);
               });
             },
           },
@@ -110,15 +156,7 @@ export function SankeyDiagram() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {selectedNode === null
-            ? ""
-            : `${
-                selectedDescription +
-                " \n" +
-                "This component contributes " +
-                (2204 * selectedNode[2]).toLocaleString("en-us") +
-                " lbs of CO2 to the University's carbon footprint."
-              }`}
+          {selectedNode === null ? "" : selectedDescription}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setSelectedNode(null)}>

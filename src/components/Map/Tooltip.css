@@ -1,0 +1,29 @@
+.tooltip {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px 15px; /* Increased padding for larger size */
+  border-radius: 5px;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -110%); /* Adjust the tooltip to appear above the marker */
+  z-index: 9999; /* High z-index to ensure tooltip is in front */
+  transition: all 0.3s ease;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #ccc;
+  bottom: -5px;
+  left: calc(50% - 5px);
+}
+
+.tooltip:hover{
+  transform: scale(1.05);
+    cursor: pointer;
+}

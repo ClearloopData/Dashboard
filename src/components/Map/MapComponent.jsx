@@ -87,6 +87,7 @@ function MapComponent() {
           />
         </Col>
         <Col xs={12} sm={12} md={5} lg={5} className="offset-md-1">
+          <h1>If we can add the Project Map to Live Stats grid, this part might be removed?</h1>
           <h3 className="smallerText">
             The current Clearloop solar farms are located in Jackson, TN, and
             Paris, TN. In addition, Vanderbilt's solar farm is being built in

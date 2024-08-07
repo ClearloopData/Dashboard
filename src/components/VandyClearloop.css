@@ -1,0 +1,141 @@
+.vandy-clearloop {
+    text-align: center;
+    padding: 40px;
+    background-color: white;
+    color: #be9c08;
+  }
+  
+  .vandy-clearloop h1 {
+    font-size: 60px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    color: black;
+    font-family: 'Didot', serif;
+    font-weight: bold;
+  }
+
+  .subtitle{
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: black;
+    font-family: 'Didot', serif;
+    font-weight: bold;
+  }
+  
+  .tiles-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .tile:hover {
+    transform: scale(1.05);
+  }
+  
+  .tile-content {
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-family: 'Garamond', serif;
+  }
+  
+  .tile-content p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .data-project-container{
+    border: 2px solid #ccc; /* Border color and width */
+    padding: 50px; /* Space inside the border */
+    border-radius: 5px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+
+  .data-project-container h3{
+    margin-bottom: 10px;
+  }
+
+  .three-projects {
+    display: flex;
+    justify-content: space-between; /* Space between the projects */
+    align-items: flex-start; /* Align items at the top */
+    padding: 20px;
+    background-color: white;
+  }
+  
+  .project {
+    flex: 1; /* Allow the projects to grow equally */
+    margin: 0 10px; /* Add some margin between the projects */
+    text-align: center; /* Center the text */
+  }
+  
+  .project h3 {
+    margin-bottom: 10px;
+  }
+  
+  .project img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .project img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  .sankey-chart{
+    margin-bottom: 100px;
+  }
+  .sankey-chart button{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    background-color: rgb(64, 64, 118);
+  }
+
+  .data-project-container p{
+    color: black;
+    font-family: 'Lato', sans-serif;
+  font-size: 1em; /* Adjust the size as needed */
+  font-weight: 400; /* Normal weight */
+  line-height: 1.6; 
+  }
+
+  .closing-section {
+    width: 100%;
+    height: 60vh;
+    
+    background-color: #150F44;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .closing-section h2 {
+    margin-bottom: 20px; /* Adjust as needed */
+    font-size: 2em;
+    color: white; /* Adjust the text color as needed */
+    font-family: 'Didot', serif;
+    font-weight: bold;
+  }
+  
+  .closing-section .dark-logo {
+    margin-top: 20px; /* Adjust as needed */
+    
+  }
+
+  .closing-section a {
+    margin-bottom: 20px; /* Adjust as needed */
+    color: white; /* Link color */
+    text-decoration: none;
+  }
+
+  .closing-section a:hover {
+    text-decoration: underline;
+  }
+  

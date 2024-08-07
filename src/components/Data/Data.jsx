@@ -24,7 +24,7 @@ function Data() {
       </div>
       <CardComponent />
       <StatsComponent />
-      <MapComponent></MapComponent>
+      {/* <MapComponent></MapComponent> */}
       <SolarOffsetsTimeline></SolarOffsetsTimeline>
     </div>
   );

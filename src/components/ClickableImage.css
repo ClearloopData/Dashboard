@@ -1,0 +1,57 @@
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.data-image {
+    width: 200px;
+    height: auto;
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    margin-left: 0px;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite; /* Add bounce animation */
+    
+}
+
+.data-image:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.clickable-image {
+    width: 120px;
+    height: auto;
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    margin-left: 0px;
+    transition: all 0.3s ease;
+}
+
+.clickable-image:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.whitepine-image{
+    width: 200px;
+    height: auto;
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    margin-left: 0px;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+    margin-top: 20px;
+}
+
+.logo-image{
+    width: 320px;
+    height: auto;
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    margin-left: 0px;
+    transition: all 0.3s ease;
+}
