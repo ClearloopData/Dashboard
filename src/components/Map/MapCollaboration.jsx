@@ -33,17 +33,19 @@ const locations = [
 
 function MapCollaboration() {
   const [showMap, setShowMap] = useState(false);
-  const [mapData, setMapData] = useState(null);
+  // const [mapData, setMapData] = useState(null);
   const [usMapLoaded, setUsMapLoaded] = useState(false);
   const [tooltips, setTooltips] = useState([]);
   const mapRef = useRef(null);
+
+  const projection = d3.geoAlbersUsa().scale(1000).translate([487.5, 305]);
 
   useEffect(() => {
     const loadMapData = () => {
       try {
         console.log('Loading map data from imported JSON');
         console.log('Map data:', usMapData);
-        setMapData(usMapData);
+        // setMapData(usMapData);
         setUsMapLoaded(true);
       } catch (error) {
         console.error('Error loading map data:', error);
@@ -80,8 +82,6 @@ function MapCollaboration() {
       setTooltips(newTooltips);
     }
   }, [usMapLoaded]);
-
-  const projection = d3.geoAlbersUsa().scale(1000).translate([487.5, 305]);
 
   const handleMarkerMouseEnter = (location) => {
     const [x, y] = projection(location.coordinates);
@@ -209,4 +209,3 @@ function MapCollaboration() {
 }
 
 export default MapCollaboration;
-
